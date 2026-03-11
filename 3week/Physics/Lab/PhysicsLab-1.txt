@@ -1,0 +1,40 @@
+(1).
+notes:
+- We measured the voltage inside the circuit, instead of using the voltage reading on the power supply. ->
+This means that we have a voltage uncertainty of 1.2%, the uncertainty of the multimeter.
+
+
+From your graph, what can you conclude about the validity of Ohm’s law?
+Since our y axis is equal to amps, and our x axis is equal to voltage, our slope is mA/V or 1/Kilo-ohms.
+Our graph has a trend line with a slope of ~1.017. our measured kiloohms for the system is 1/1.017 ~ 0.983.
+Assuming the resistor has a 5% uncertainty, that puts us in the realm of 1.05 ~ 0.95, our value lies within this uncertainty limit. So i'd say yes, our experiment
+is consistent with Ohm's law. This experiment backs the validity of Ohm's law.
+
+Do your two measured values of resistance agree within uncertainties?
+Yes they do. Its the same answer to the above question, assuming the resistor uncertainty is 5%, we are within the real of expectation.
+Even disregarding the fact that our measured value has its own uncertainty, our value just overlaps with the other resistors values.
+
+
+The slope uncertainty is calculated in spreadsheet.
+
+(2)
+[Predicted]
+current = 3 ± 0.2 A 
+voltage = 11.7 ± 1 V
+[Measured]
+current = 2 ± 1.2% A
+voltage = 12 ± 1.2% V
+
+All calculations in photos. All 2nd question calculations are on first page
+
+(3).
+[Predicted]
+current = 8.36 ± 0.3 A 
+voltage = 6.6 ± 0.6 V
+[Measured]
+current = 8.34 ± 1.2% A
+voltage = 6.67 ± 1.2% V
+
+Judging based on our measurements, our uncertainties bundled with our measurements are firmly consistent.
+
+All calculations in photos. All 3rd question calculations are on second page.
