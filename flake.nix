@@ -11,18 +11,13 @@
       ...
     }:
     {
-      devShells.x86_64-linux.default =
-        let
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        in
-        pkgs.mkShell {
-          packages = [
-            vpython.packages.x86_64-linux.vpython
-          ];
-          shellHook = ''
-            echo "vpython enabled"
-            export PS1="\[\033[0;32m\]vpython-\e[38;5;141m\]\$\[\e[0m\]\[\033[0m\] "
-          '';
-        };
+      devShells.x86_64-linux.default = nixpkgs.legacyPackages.x86_64-linux.mkShell {
+        packages = [
+          vpython.packages.x86_64-linux.vpython
+        ];
+        shellHook = ''
+          export PS1="\n\[\033[1;32m\][nix-shell:\w]\[\033[01;36m\]\$(parse_git_branch)\[\033[0m\]\$ "
+        '';
+      };
     };
 }
