@@ -28,7 +28,7 @@
     }:
     let
       inherit (nixpkgs) lib;
-      forAllSystems = lib.genAttrs lib.systems.flakeExposed;
+      system = "x86_64-linux";
       workspace = uv2nix.lib.workspace.loadWorkspace { workspaceRoot = ./.; };
       overlay = workspace.mkPyprojectOverlay {
         sourcePreference = "wheel";
@@ -36,8 +36,7 @@
       editableOverlay = workspace.mkEditablePyprojectOverlay {
         root = "$REPO_ROOT";
       };
-      pythonSets = forAllSystems (
-        system:
+      pythonSets =
         let
           pkgs = nixpkgs.legacyPackages.${system};
           python = pkgs.python3;
@@ -50,15 +49,13 @@
               pyproject-build-systems.overlays.wheel
               overlay
             ]
-          )
-      );
+          );
     in
     {
-      devShells = forAllSystems (
-        system:
+      devShells.${system} =
         let
           pkgs = nixpkgs.legacyPackages.${system};
-          pythonSet = pythonSets.${system}.overrideScope editableOverlay;
+          pythonSet = pythonSets.overrideScope editableOverlay;
           virtualenv = pythonSet.mkVirtualEnv "hello-world-dev-env" workspace.deps.all;
         in
         {
@@ -78,7 +75,6 @@
               export PS1="\n\[\033[1;32m\][nix-shell:\w]\$\[\033[0m\] "
             '';
           };
-        }
-      );
+        };
     };
 }
