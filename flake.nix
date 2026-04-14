@@ -1,5 +1,5 @@
 {
-  description = "hello world application using uv2nix";
+  description = "Nixos dev environment for my schoolwork";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     pyproject-nix = {
@@ -80,8 +80,5 @@
           };
         }
       );
-      packages = forAllSystems (system: {
-        default = pythonSets.${system}.mkVirtualEnv "hello-world-env" workspace.deps.default;
-      });
     };
 }
