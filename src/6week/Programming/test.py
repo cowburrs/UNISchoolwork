@@ -1,32 +1,39 @@
 from vpython import *
 
-# Scene setup
-scene.title = "Bouncing Ball"
-scene.background = color.black
+ground = box(pos=vector(0, -1, 0), length=10, height=1, width=6, color=color.green)
 
-# Floor
-floor = box(pos=vector(0, -5, 0), size=vector(10, 0.2, 4), color=color.green)
+tower = box(pos=vector(-5, 2, 0), length=1, height=6, width=1, color=color.blue)
 
-# Ball
-ball = sphere(pos=vector(0, 4, 0), radius=0.5, color=color.red, make_trail=True)
+ball = sphere(
+    pos=vector(-5, 6 + 0.5, 0),
+    vel=vector(100, 0, 0),
+    radius=0.5,
+    color=color.red,
+    make_trail=True,
+)
+# Set up a loop for the simulation
 
-# Physics
-velocity = vector(1.5, 0, 0)
-gravity = vector(0, -9.8, 0)
+t = 0
+
 dt = 0.01
-bounciness = 0.85
+g = vector(0, -4.9, 0)
 
 while True:
-    rate(100)
-    
-    velocity += gravity * dt
-    ball.pos += velocity * dt
-    
-    # Bounce off floor
-    if ball.pos.y - ball.radius <= floor.pos.y + 0.1:
-        ball.pos.y = floor.pos.y + 0.1 + ball.radius
-        velocity.y = -velocity.y * bounciness
-    
-    # Bounce off walls
-    if abs(ball.pos.x) + ball.radius >= 5:
-        velocity.x = -velocity.x
+    for _ in range(2):
+        rate(50)
+
+        # Add physics calculations to the loop
+
+        t = t + dt
+        ball.vel += g * dt
+        if ball.pos.y < 0:
+            ball.vel.y *= -1
+        drag = (1 / 64) * (3.14) * 1.225 * (mag(ball.vel) ** 2)
+        ball.vel -= norm(ball.vel) * drag * dt
+        air = vector(-2, 0, 0)
+        ball.vel += air * dt
+        ball.pos = ball.pos + ball.vel * dt
+
+# Record a final state or data for output
+
+print(ball.pos)
