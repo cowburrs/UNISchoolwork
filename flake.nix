@@ -63,7 +63,12 @@
             packages = [
               virtualenv
               pkgs.uv
-            ];
+            ]
+            ++ (with pkgs; [
+              isort
+              black
+              pyright
+            ]);
             env = {
               UV_NO_SYNC = "1";
               UV_PYTHON = pythonSet.python.interpreter;
