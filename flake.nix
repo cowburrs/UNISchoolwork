@@ -65,9 +65,13 @@
               pkgs.uv
             ]
             ++ (with pkgs; [
+              # for some reasom my lsp works inside here wtf
               isort
               black
               pyright
+              ghc
+              haskell-language-server
+              ormolu
             ]);
             env = {
               UV_NO_SYNC = "1";
