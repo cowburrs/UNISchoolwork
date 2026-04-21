@@ -90,6 +90,7 @@
               ghc
               haskell-language-server
               ormolu
+				  octave
             ]);
             env = {
               UV_NO_SYNC = "1";
