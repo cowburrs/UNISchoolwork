@@ -48,6 +48,18 @@
             lib.composeManyExtensions [
               pyproject-build-systems.overlays.wheel
               overlay
+              (
+                final: _prev:
+                let
+                  inherit (final) pkgs;
+                  hacks = pkgs.callPackage pyproject-nix.build.hacks { };
+                in
+                {
+                  tkinter = hacks.nixpkgsPrebuilt {
+                    from = python.pkgs.tkinter;
+                  };
+                }
+              )
             ]
           );
     in
@@ -56,7 +68,13 @@
         let
           pkgs = nixpkgs.legacyPackages.${system};
           pythonSet = pythonSets.overrideScope editableOverlay;
-          virtualenv = pythonSet.mkVirtualEnv "hello-world-dev-env" workspace.deps.all;
+          # virtualenv = pythonSet.mkVirtualEnv "hello-world-dev-env" workspace.deps.all;
+          virtualenv = pythonSet.mkVirtualEnv "hello-tkinter-dev-env" (
+            workspace.deps.all
+            // {
+              tkinter = [ ];
+            }
+          );
         in
         {
           default = pkgs.mkShell {
