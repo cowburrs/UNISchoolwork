@@ -15,6 +15,7 @@ dev = [
   "matplotlib>=3.10.8",
   "pandas>=3.0.2",
   "odfpy>=1.4.1",
+  "scipy>=1.17.1",
 ]
 [tool.uv.extra-build-dependencies]
 "py-ubjson" = ["setuptools"]
