@@ -1,0 +1,14 @@
+Equation1 is12.87+/-0.04
+Equation2 is0.0195+/-0.0006
+Equation3 is(9.00+/-0.05)e-11
+
+Saved plot to supernova_plot.png
+
+Alloy C Strength is 10.02093+/-0.00025
+Alloy D Strength is 10.09530+/-0.00021
+The difference between the two is -0.07437+/-0.00032
+so D is around 0.7421+/-0.0033% better than C
+which is marginal but still something
+it is comfortably very slightly better, only slightly
+
+Saved plot to xyplot.png
