@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np  # imports not on the top nooo
 import pandas as pd
 import scipy as sp
+from scipy import stats
 from scipy.optimize import curve_fit
 from uncertainties import ufloat
 
