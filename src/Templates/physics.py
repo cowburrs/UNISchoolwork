@@ -14,8 +14,8 @@ from uncertainties import ufloat
 
 
 def uprint(x):
-    print(f"{(x ** 0.5).n:.5f}")  # print number
-    print(f"{(x ** 0.5).s:.5f}")  # print uncertainty
+    print(f"{(x).n:.5f}")  # print number
+    print(f"{(x).s:.5f}")  # print uncertainty
 
 
 numbers = list(range(1, 17))
