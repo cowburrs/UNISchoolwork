@@ -48,26 +48,19 @@ v1v2list.sort(key=lambda x: x[0])
 v1list = [x[0] for x in v1v2list]
 v2list = [x[1] for x in v1v2list]
 currentlist = [(x[0] - x[1]) / 3900 for x in v1v2list]
-# print(currentlist)
-# print(v1list)
-# print(v2list)
-# [print(x) for x in zip(currentlist, v1list, v2list)]
-
 plt.axhline(0, color="black", linewidth=0.8)
 plt.axvline(0, color="black", linewidth=0.8)
-
 plt.plot(v2list, currentlist)
-# plt.axvline(0.67, color="black", linewidth=0.8)
 plt.title("Voltage(Zener) over Voltage(Total)")
-plt.xlabel("Voltage Through Diode")
-plt.ylabel("Current Through Diode")
+plt.xlabel("Voltage Through Diode (V)")
+plt.ylabel("Current Through Diode (A)")
 plt.savefig("currentvoltage", dpi=300)
 plt.clf()
 
 plt.plot(v1list, v2list)
-plt.title("Voltage vs Current over Zener diode")
-plt.xlabel("V1 (Volts)")
-plt.ylabel("V2 (Volts)")
+plt.title("Voltage(Total) vs Voltage(Diode)")
+plt.xlabel("Voltage(Total) (V)")
+plt.ylabel("Voltage(Diode) (V)")
 plt.savefig("volts vs volts", dpi=300)
 plt.clf()
 
@@ -106,9 +99,11 @@ part2vlist.sort(key=lambda x: x[0])
 v1list = [x[0] for x in part2vlist]
 v2list = [x[1] for x in part2vlist]
 
-plt.plot(v1list, v2list)
+plt.plot(v1list, v2list,err=[x for x in v1list])
+plt.title("Total Voltage vs Voltage through Diode + 1k resistor")
+plt.xlabel("Total Voltage (V)")
+plt.ylabel("Voltage through resistors (V)")
 plt.savefig("part2", dpi=300)
-plt.title("part2")
 # plt.xlabel("Voltage Through Diode")
 # plt.ylabel("Current Through Diode")
 
