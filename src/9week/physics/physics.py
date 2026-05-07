@@ -48,9 +48,30 @@ v1v2list.sort(key=lambda x: x[0])
 v1list = [x[0] for x in v1v2list]
 v2list = [x[1] for x in v1v2list]
 currentlist = [(x[0] - x[1]) / 3900 for x in v1v2list]
+
+v1listuncertainty = [ufloat(x[0], abs(x[0] * 0.012)) for x in v1v2list]
+v2listuncertianty = [ufloat(x[1], abs(x[1] * 0.012)) for x in v1v2list]
+currentlistuncertainty = [
+    ((x[0] - x[1]) / 3900).s
+    for x in [
+        (v1listuncertainty[i], v2listuncertianty[i]) for i in range(len(v1v2list))
+    ]
+]
 plt.axhline(0, color="black", linewidth=0.8)
 plt.axvline(0, color="black", linewidth=0.8)
 plt.plot(v2list, currentlist)
+plt.errorbar(
+    v2list,
+    currentlist,
+    xerr=[abs(x) * 0.012 for x in v2list],
+    yerr=[y for y in currentlistuncertainty],
+    fmt="o",
+    color="black",
+    ecolor="red",
+    capsize=5,
+    elinewidth=2,
+    markersize=2,
+)
 plt.title("Voltage(Zener) over Voltage(Total)")
 plt.xlabel("Voltage Through Diode (V)")
 plt.ylabel("Current Through Diode (A)")
@@ -58,10 +79,23 @@ plt.savefig("currentvoltage", dpi=300)
 plt.clf()
 
 plt.plot(v1list, v2list)
+
+plt.errorbar(
+    v1list,
+    v2list,
+    xerr=[abs(x) * 0.012 for x in v1list],
+    yerr=[abs(y) * 0.012 for y in v2list],
+    fmt="o",
+    color="black",
+    ecolor="red",
+    capsize=5,
+    elinewidth=2,
+    markersize=2,
+)
 plt.title("Voltage(Total) vs Voltage(Diode)")
 plt.xlabel("Voltage(Total) (V)")
 plt.ylabel("Voltage(Diode) (V)")
-plt.savefig("volts vs volts", dpi=300)
+plt.savefig("voltsvsvolts", dpi=300)
 plt.clf()
 
 part2vlist = [
@@ -99,7 +133,19 @@ part2vlist.sort(key=lambda x: x[0])
 v1list = [x[0] for x in part2vlist]
 v2list = [x[1] for x in part2vlist]
 
-plt.plot(v1list, v2list,err=[x for x in v1list])
+plt.plot(v1list, v2list)
+plt.errorbar(
+    v1list,
+    v2list,
+    xerr=[abs(x) * 0.012 for x in v1list],
+    yerr=[abs(y) * 0.012 for y in v2list],
+    fmt="o",
+    color="black",
+    ecolor="red",
+    capsize=5,
+    elinewidth=2,
+    markersize=2,
+)
 plt.title("Total Voltage vs Voltage through Diode + 1k resistor")
 plt.xlabel("Total Voltage (V)")
 plt.ylabel("Voltage through resistors (V)")
