@@ -94,6 +94,7 @@
               (with haskellPackages; [
                 doctest
               ])
+				  graphviz
             ]);
             env = {
               UV_NO_SYNC = "1";

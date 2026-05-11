@@ -16,6 +16,7 @@ dev = [
   "pandas>=3.0.2",
   "odfpy>=1.4.1",
   "scipy>=1.17.1",
+  "graphviz>=0.21",
 ]
 [tool.uv.extra-build-dependencies]
 "py-ubjson" = ["setuptools"]
