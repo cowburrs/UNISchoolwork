@@ -94,7 +94,11 @@
               (with haskellPackages; [
                 doctest
               ])
-				  graphviz
+              graphviz
+              (with python314Packages; [
+                miss-hit
+              ])
+				  matlab-language-server
             ]);
             env = {
               UV_NO_SYNC = "1";
