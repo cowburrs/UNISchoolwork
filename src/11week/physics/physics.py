@@ -29,30 +29,88 @@ def exp_func(x, a, b):
     return a * np.exp(b * x)
 
 
-params, _ = curve_fit(exp_func, numbers, numbers)
-a, b = params
-exp_line = [exp_func(i, a, b) for i in numbers]
-plt.plot(numbers, exp_line, color="green", label=f"y = {a:.2f}e^({b:.2f}x)")
+bl = [  # nth bounce, milliseconds ERROR += 5 ms due to thats the yeah whatever
+    (1, 440),
+    (2, 310),
+    (3, 260),
+    (4, 190),
+    (5, 150),
+    (6, 120),
+]
 
-degree = 2
-coeffs = np.polyfit(numbers, numbers, degree) # change 1 to change degree polynomial
-poly = np.poly1d(coeffs)
-line = [poly(i) for i in numbers]
-plt.plot(numbers, line, color='purple', label=f'poly deg {degree}')
+b2l = [  # nth bounce, milliseconds
+    (1, 420),
+    (2, 320),
+    (3, 240),
+    (4, 190),
+    (5, 140),
+    (6, 120),
+]
 
-plt.bar(range(1, 17), numbers, yerr=se, capsize=5)
-plt.title("Numbers with Standard Error")
-plt.xlabel("Index")
-plt.ylabel("Value")
+blp = [  # nth bounce, milliseconds
+    (1, 500),
+    (2, 460),
+    (3, 440),
+    (4, 420),
+    (5, 370),
+    (6, 350),
+    (7, 340),
+    (8, 300),
+    (9, 280),
+    (10, 280),
+    (11, 260),
+    (12, 230),
+]
+
+b2lp = [  # nth bounce, milliseconds
+    (1, 500),
+    (2, 480),
+    (3, 460),
+    (4, 410),
+    (5, 380),
+    (6, 350),
+    (7, 330),
+    (8, 320),
+    (9, 280),
+    (10, 260),
+    (11, 240),
+    (12, 230),
+]
+tennisbounces = [
+    (ufloat(bl[x][1], 5) + ufloat(b2l[x][1], 5)) / 2 for x in range(len(bl))
+]
+pingpongbounces = [
+    (ufloat(blp[x][1], 5) + ufloat(b2lp[x][1], 5)) / 2 for x in range(len(blp))
+]
+plt.errorbar(
+    [x for x in range(len(tennisbounces))],
+    [x.n for x in tennisbounces],
+    yerr=[x.s for x in tennisbounces],
+    capsize=5,
+    color="black",
+    ecolor="red",
+)
+plt.title("Bounce time vs #Bounce on a tennis ball")
+plt.xlabel("Bounce Number")
+plt.ylabel("T (ms)")
+# plt.semilogx()
+plt.semilogy()
+plt.savefig("tennball", dpi=300)
+plt.clf()
+
+plt.errorbar(
+    [x for x in range(len(pingpongbounces))],
+    [x.n for x in pingpongbounces],
+    yerr=[x.s for x in pingpongbounces],
+    capsize=5,
+    color="black",
+    ecolor="red",
+)
+plt.title("Bounce time vs #Bounce on a pongping ball")
+plt.xlabel("Bounce Number")
+plt.ylabel("T (ms)")
+# plt.semilogx()
+plt.semilogy()
+plt.savefig("PinPon", dpi=300)
 plt.show()
-
-# pop_std = statistics.pstdev(numbers)
-# sam_std = statistics.stdev(numbers)
-# mean = statistics.mean(numbers)
-# right_tail = 1 - stats.norm.cdf(1)
-# left_tail = stats.norm.cdf(1)
-# two_tail = 1 - (2 * (1 - stats.norm.cdf(1)))
-#
-# x = ufloat(10, 3)
-# uprint(x)
-#
+plt.clf()
