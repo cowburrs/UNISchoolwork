@@ -85,7 +85,7 @@ pingpongbounces2 = [ufloat(x[1], 5) / 1000 for x in b2lp]
 
 def dofunction(list, name, what):
     plt.errorbar(
-        [x for x in range(len(list))],
+        [x + 1 for x in range(len(list))],
         [math.log(x.n) for x in list],
         yerr=[x.s / x.n for x in list],
         capsize=5,
@@ -95,6 +95,15 @@ def dofunction(list, name, what):
     plt.title("Bounce time vs #Bounce " + what)
     plt.xlabel("Bounce Number")
     plt.ylabel("ln(T) (ms)")
+
+    x = np.array([i+1 for i in range(len(list))])
+    y = np.array([math.log(b.n) for b in list])
+    err_y = np.array([b.s / b.n for b in list])
+    x1 = sm.add_constant(x)
+    w = 1.0 / (err_y**2)
+    result = sm.WLS(y, x1, weights=w).fit()
+    plt.plot(x, result.params[1]*x + result.params[0], color="purple", label="WLS fit")
+    plt.legend()
     plt.savefig(name, dpi=300)
     plt.clf()
 
