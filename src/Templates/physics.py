@@ -56,3 +56,6 @@ plt.show()
 # x = ufloat(10, 3)
 # uprint(x)
 #
+
+def compsigma(a, b):
+    return abs((a.n - b.n) / ((((a.s**2) + (b.s**2)) ** (1 / 2))))
