@@ -21,19 +21,19 @@ dot = Digraph(
     },
 )
 
-entry = {
-    "shape": "box",
-    "style": "filled,rounded",
-    "fillcolor": "#FFD966",
-    "color": "#B8960A",
-    "penwidth": "2",
-}
 decision = {
     "shape": "diamond",
     "style": "filled",
     "fillcolor": "#A8D8D8",
     "color": "#3A8A8A",
     "penwidth": "1.5",
+}
+entry = {
+    "shape": "box",
+    "style": "filled,rounded",
+    "fillcolor": "#FFD966",
+    "color": "#B8960A",
+    "penwidth": "2",
 }
 action = {
     "shape": "box",
@@ -50,7 +50,6 @@ terminal = {
     "penwidth": "1.5",
 }
 
-dot.node("loop_start", "loop()", **entry)
 dot.node("read_sensors", "readSideSensor(20)\nreadFrontSensor(20)", **action)
 dot.node("cond_even1", "movenumber%2==0\n&& front>10\n&& noSideWall(side)?", **decision)
 dot.node("turn_left_1", "turnLeft(turnleftdelta)\nstop(100)", **action)
@@ -63,6 +62,7 @@ dot.node("check45_A", "check45()?", **decision)
 dot.node(
     "move_fwd_A", "moveForward(...)\nstop(100)\npdMoveForward(...)\nstop(100)", **action
 )
+dot.node("loop_start", "loop()", **entry)
 dot.node("turn_right_2x", "turnRight x2\nwith stop(100)", **action)
 dot.node("cond_B", "movenumber%2==0?", **decision)
 dot.node("cond_front", "front < 10?", **decision)

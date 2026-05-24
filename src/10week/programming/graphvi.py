@@ -10,7 +10,6 @@ dot = Digraph(
     }
 )
 
-# Node styles
 box = {
     "shape": "box",
     "style": "filled",
@@ -42,12 +41,11 @@ dot.node("wall", "Wall Collision?", **diamond)
 dot.node("body", "Body Collision", **diamond)
 dot.node("finish", "Game Finish\n-> Display Final Score", **box)
 
-# Force same-rank for horizontal grouping
-with dot.subgraph() as s:
-    s.attr(rank="same")
-    s.node("collision")
-    s.node("food")
-    s.node("score")
+# with dot.subgraph() as s:
+#     s.attr(rank="same")
+#     s.node("collision")
+#     s.node("food")
+#     s.node("score")
 
 edge_yes = {"color": "#00AA00", "fontname": "Helvetica", "fontsize": "11"}
 edge_no = {"color": "#CC0000", "fontname": "Helvetica", "fontsize": "11"}
