@@ -4,19 +4,19 @@ dot = Digraph(
     graph_attr={
         "rankdir": "TB",
         "splines": "ortho",
-        "nodesep": "0.7",
-        "ranksep": "1.1",
+        "nodesep": "0.2",
+        "ranksep": "0",
         "bgcolor": "white",
         "fontname": "Aporetic Sans",
-        "pad": "0.5",
+        "pad": "0.1",
     },
     node_attr={
         "fontname": "Aporetic Sans",
-        "fontsize": "11",
+        "fontsize": "16",
     },
     edge_attr={
         "fontname": "Aporetic Sans",
-        "fontsize": "9",
+        "fontsize": "18",
         "color": "#555555",
     },
 )
