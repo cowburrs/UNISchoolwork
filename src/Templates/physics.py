@@ -18,44 +18,92 @@ def uprint(x):
     print(f"{(x).s:.5f}")  # print uncertainty
 
 
-numbers = list(range(1, 17))
-mean = statistics.mean(numbers)
-std = statistics.pstdev(numbers)
-n = len(numbers)
-se = std / (n**0.5)
+# def plotgraph
+
+
+def getmean(l: list):
+    return statistics.mean(l)
 
 
 def exp_func(x, a, b):
     return a * np.exp(b * x)
 
 
-params, _ = curve_fit(exp_func, numbers, numbers)
-a, b = params
-exp_line = [exp_func(i, a, b) for i in numbers]
-plt.plot(numbers, exp_line, color="green", label=f"y = {a:.2f}e^({b:.2f}x)")
+def plot_normal(numbers, y=None, xerr=None, yerr=None):
+    if y is None:
+        y = range(1, len(numbers) + 1)
+    plt.figure()
+    plt.errorbar(y, numbers, xerr=xerr, yerr=yerr, capsize=5, linestyle='none', marker='o')
+    plt.title("Numbers with Standard Error")
+    plt.xlabel("Index")
+    plt.ylabel("Value")
+    plt.legend()
+    plt.show()
+    plt.clf()
 
-degree = 2
-coeffs = np.polyfit(numbers, numbers, degree) # change 1 to change degree polynomial
-poly = np.poly1d(coeffs)
-line = [poly(i) for i in numbers]
-plt.plot(numbers, line, color='purple', label=f'poly deg {degree}')
+def plot_poly_fit(numbers, y=None, xerr=None, yerr=None, degree=2):
+    if y is None:
+        y = range(1, len(numbers) + 1)
+    plt.figure()
+    plt.errorbar(y, numbers, xerr=xerr, yerr=yerr, capsize=5, linestyle='none', marker='o')
 
-plt.bar(range(1, 17), numbers, yerr=se, capsize=5)
-plt.title("Numbers with Standard Error")
-plt.xlabel("Index")
-plt.ylabel("Value")
-plt.show()
+    coeffs = np.polyfit(list(y), numbers, degree)
+    poly = np.poly1d(coeffs)
+    x_smooth = np.linspace(min(y), max(y), 300)
+    plt.plot(x_smooth, poly(x_smooth), color="purple", label=f"poly deg {degree}")
 
-# pop_std = statistics.pstdev(numbers)
-# sam_std = statistics.stdev(numbers)
-# mean = statistics.mean(numbers)
-# right_tail = 1 - stats.norm.cdf(1)
-# left_tail = stats.norm.cdf(1)
-# two_tail = 1 - (2 * (1 - stats.norm.cdf(1)))
-#
-# x = ufloat(10, 3)
-# uprint(x)
-#
+    plt.title(f"Polynomial Fit (degree {degree})")
+    plt.xlabel("Index")
+    plt.ylabel("Value")
+    plt.legend()
+    plt.show()
+    plt.clf()
+
+def plot_exp_fit(numbers, y=None, xerr=None, yerr=None):
+    if y is None:
+        y = np.array(range(1, len(numbers) + 1), dtype=float)
+    y = np.array(y, dtype=float)
+    numbers = np.array(numbers, dtype=float)
+    plt.figure()
+    plt.errorbar(y, numbers, xerr=xerr, yerr=yerr, capsize=5, linestyle='none', marker='o')
+
+    try:
+        params, _ = curve_fit(exp_func, y, numbers, maxfev=5000)
+        a, b = params
+        x_smooth = np.linspace(min(y), max(y), 300)
+        plt.plot(x_smooth, exp_func(x_smooth, a, b), color="green",
+                 label=f"y = {a:.2f}·e^({b:.2f}x)")
+    except RuntimeError:
+        print("Exponential fit did not converge.")
+
+    plt.title("Exponential Fit")
+    plt.xlabel("Index")
+    plt.ylabel("Value")
+    plt.legend()
+    plt.show()
+    plt.clf()
+
+
 
 def compsigma(a, b):
     return abs((a.n - b.n) / ((((a.s**2) + (b.s**2)) ** (1 / 2))))
+
+
+def getpopstd(numbers):
+    return statistics.pstdev(numbers)
+
+
+def getsamstd(numbers):
+    return statistics.stdev(numbers)
+
+
+def getrighttail(stds):
+    return 1 - stats.norm.cdf(stds)
+
+
+def getlefttail(stds):
+    return stats.norm.cdf(stds)
+
+
+def gettwotail(stds):
+    return 1 - (2 * (1 - stats.norm.cdf(stds)))
