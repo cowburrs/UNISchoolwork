@@ -89,11 +89,11 @@ def compsigma(a, b):
     return abs((a.n - b.n) / ((((a.s**2) + (b.s**2)) ** (1 / 2))))
 
 
-def getpopstd(numbers):
+def getpopstd(numbers: list):
     return statistics.pstdev(numbers)
 
 
-def getsamstd(numbers):
+def getsamstd(numbers: list):
     return statistics.stdev(numbers)
 
 
