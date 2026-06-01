@@ -98,7 +98,7 @@
               (with python314Packages; [
                 miss-hit
               ])
-				  matlab-language-server
+              matlab-language-server
             ]);
             env = {
               UV_NO_SYNC = "1";
