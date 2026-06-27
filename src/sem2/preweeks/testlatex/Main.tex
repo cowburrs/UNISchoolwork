@@ -1,0 +1,31 @@
+\documentclass{article}
+
+\usepackage[backend=biber, style=numeric]{biblatex}
+
+\addbibresource{references.bib}
+
+\title{My Document}
+\author{Your Name}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+This is an example sentence citing a source \cite{noauthor_61_nodate}.
+Here's another claim from a different source \cite{noauthor_ch_nodate}.
+
+You can cite multiple works at once too \cite{noauthor_61_nodate, noauthor_ch_nodate}.
+
+\section{Conclusion}
+
+Only the keys you actually use with \texttt{\textbackslash cite\{\}}
+above will show up in the bibliography below --- try deleting one
+of the \texttt{\textbackslash cite\{\}} calls and recompiling to see
+the bibliography shrink.
+
+\printbibliography
+
+\end{document}

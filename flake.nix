@@ -62,11 +62,41 @@
               )
             ]
           );
+      pkgs = nixpkgs.legacyPackages.${system};
     in
-    {
+    rec {
+
+      packages.x86_64-linux.mkbib = pkgs.writeShellApplication {
+        name = "mkbib";
+        runtimeInputs = with pkgs; [
+          (python3.withPackages (p: [
+            p.pyzotero
+          ]))
+          jq
+        ];
+        text = ''
+          b=$(jq -r '.password_name' pytero.json)
+          a=$(bw get password "$b")
+          python ${./ci/mkbib.py} "$a"
+        '';
+      };
+      packages.x86_64-linux.getkeys = pkgs.writeShellApplication {
+        name = "getkeys";
+        runtimeInputs = with pkgs; [
+          (python3.withPackages (p: [
+            p.pyzotero
+          ]))
+          jq
+        ];
+        text = ''
+          b=$(jq -r '.password_name' pytero.json)
+          a=$(bw get password "$b")
+          python ${./ci/getkeys.py} "$a"
+        '';
+      };
+
       devShells.${system} =
         let
-          pkgs = nixpkgs.legacyPackages.${system};
           pythonSet = pythonSets.overrideScope editableOverlay;
           # virtualenv = pythonSet.mkVirtualEnv "hello-world-dev-env" workspace.deps.all;
           virtualenv = pythonSet.mkVirtualEnv "hello-tkinter-dev-env" (
@@ -79,11 +109,12 @@
         {
           default = pkgs.mkShell {
             packages = [
+              packages.x86_64-linux.getkeys
+              packages.x86_64-linux.mkbib
               virtualenv
               pkgs.uv
             ]
             ++ (with pkgs; [
-              # for some reasom my lsp works inside here wtf
               isort
               black
               pyright
@@ -99,6 +130,7 @@
                 miss-hit
               ])
               matlab-language-server
+              texlab
             ]);
             env = {
               UV_NO_SYNC = "1";
