@@ -131,6 +131,7 @@
               ])
               matlab-language-server
               texlab
+              tex-fmt
             ]);
             env = {
               UV_NO_SYNC = "1";
