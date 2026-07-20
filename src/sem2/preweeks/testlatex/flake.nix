@@ -26,17 +26,24 @@
               biblatex
               ;
           })
-        ];
+        ]
+        ++ (with pkgs; [
+          pandoc
+        ]);
         buildPhase = ''
           runHook preBuild
           pdflatex ./Main.tex
           biber main
           pdflatex ./Main.tex
+          pandoc ./Main.tex -o ./Main.epub
           runHook postBuild
         '';
         installPhase = ''
           runHook preInstall
-          cp -r ./Main.pdf $out
+          mkdir -p $out/pdf/
+          cp -r ./Main.pdf $out/pdf/
+          mkdir -p $out/epub/
+          cp -r ./Main.epub $out/epub/
           runHook postInstall
         '';
       };
