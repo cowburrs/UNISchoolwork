@@ -1,0 +1,26 @@
+- Things to do
+    - ENGN1218
+        - lectures
+        - labs
+        - mastering
+        - labs/pracs
+        - tutorial
+        - textbook
+    - ENGN1217
+        - lectures
+        - tutorials
+        - mastering
+        - labs/pracs
+        - tutorial
+        - textbook
+    - MATH1014
+        - lectures
+        - weekly quiz
+        - weekly matlab
+        - workshop
+        - textbook
+    - PHYS1201
+        - lectures
+        - lab
+        - workshop
+        - textbook
