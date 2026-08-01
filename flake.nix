@@ -63,6 +63,21 @@
             ]
           );
       pkgs = nixpkgs.legacyPackages.${system};
+      myPythonPackages =
+        ps: with ps; [
+          numpy
+          matplotlib
+        ];
+      patchedQuarto =
+        (pkgs.quarto.override {
+          extraPythonPackages = myPythonPackages;
+        }).overrideAttrs
+          (oldAttrs: {
+            postPatch = (oldAttrs.postPatch or "") + ''
+              substituteInPlace bin/quarto.js \
+                --replace-fail "syntax-highlighting" "highlight-style"
+            '';
+          });
     in
     rec {
 
@@ -107,24 +122,32 @@
           );
         in
         {
+          PHYS1201 = pkgs.mkShell {
+            packages = [ patchedQuarto ] ++ (with pkgs; [ texliveBasic ]);
+            shellHook = ''
+              export REPO_ROOT=$(git rev-parse --show-toplevel)
+              export PS1="\n\[\033[1;32m\][nix-shell:\w]\$\[\033[0m\] "
+            '';
+          };
           default = pkgs.mkShell {
             packages = [
               packages.x86_64-linux.getkeys
               packages.x86_64-linux.mkbib
               virtualenv
               pkgs.uv
+              patchedQuarto
             ]
             ++ (with pkgs; [
               isort
               black
               pyright
-              ghc
-              haskell-language-server
-              ormolu
+              # ghc
+              # haskell-language-server
+              # ormolu
               octave
-              (with haskellPackages; [
-                doctest
-              ])
+              # (with haskellPackages; [
+              #   doctest
+              # ])
               graphviz
               (with python314Packages; [
                 miss-hit
