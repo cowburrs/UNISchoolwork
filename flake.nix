@@ -67,6 +67,7 @@
         ps: with ps; [
           numpy
           matplotlib
+          pandas
         ];
       patchedQuarto =
         (pkgs.quarto.override {
@@ -123,7 +124,14 @@
         in
         {
           PHYS1201 = pkgs.mkShell {
-            packages = [ patchedQuarto ] ++ (with pkgs; [ texliveBasic ]);
+            packages = [
+              patchedQuarto
+            ]
+            ++ (with pkgs; [
+              texliveFull
+              pyright
+              python3
+            ]);
             shellHook = ''
               export REPO_ROOT=$(git rev-parse --show-toplevel)
               export PS1="\n\[\033[1;32m\][nix-shell:\w]\$\[\033[0m\] "
