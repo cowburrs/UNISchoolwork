@@ -23,9 +23,9 @@ with schemdraw.Drawing() as d:
 
 yes
 
-```{python}
-#| label: tbl-fruits
-#| tbl-cap: "Fruit prices"
-import pandas as pd
-pd.DataFrame({"Fruit": ["apple", "banana"], "Price": [1.20, 0.50]})
-```
+# ```{python}
+# #| label: tbl-fruits
+# #| tbl-cap: "Fruit prices"
+# import pandas as pd
+# pd.DataFrame({"Fruit": ["apple", "banana"], "Price": [1.20, 0.50]})
+# ```
