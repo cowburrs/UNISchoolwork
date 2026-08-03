@@ -6,12 +6,26 @@ format:
 jupyter: python3
 ---
 
-For a demonstration of a line plot on a polar axis, see @fig-polar.
+For a demonstration of a voltage divider circuit, see @fig-circuit.
 
 ```{python}
-#| label: Checking something
-#| fig-cap: "A line plot on a polar axis"
+#| label: fig-circuit
+#| fig-cap: "Voltage divider circuit"
+import schemdraw
+schemdraw.use('matplotlib')
+import schemdraw.elements as elm
+with schemdraw.Drawing() as d:
+    d += elm.SourceV().up().label('10V')
+    d += elm.Resistor().right().label('1kΩ')
+    d += elm.Resistor().down().label('2kΩ')
+    d += elm.Line().left()
+```
 
+yes
+
+```{python}
+#| label: tbl-fruits
+#| tbl-cap: "Fruit prices"
 import pandas as pd
 pd.DataFrame({"Fruit": ["apple", "banana"], "Price": [1.20, 0.50]})
 ```

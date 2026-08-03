@@ -68,6 +68,7 @@
           numpy
           matplotlib
           pandas
+          schemdraw
         ];
       patchedQuarto =
         (pkgs.quarto.override {
@@ -131,6 +132,7 @@
               texliveFull
               pyright
               python3
+              librsvg
             ]);
             shellHook = ''
               export REPO_ROOT=$(git rev-parse --show-toplevel)
