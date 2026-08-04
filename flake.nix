@@ -69,6 +69,8 @@
           matplotlib
           pandas
           schemdraw
+          uncertainties
+          scipy
         ];
       patchedQuarto =
         (pkgs.quarto.override {
@@ -129,10 +131,14 @@
               patchedQuarto
             ]
             ++ (with pkgs; [
+              isort
+              black
               texliveFull
               pyright
-              python3
+              (python3.withPackages myPythonPackages)
               librsvg
+              entr
+              nsxiv
             ]);
             shellHook = ''
               export REPO_ROOT=$(git rev-parse --show-toplevel)
