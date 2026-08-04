@@ -103,10 +103,11 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="hello.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -146,7 +147,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="results">Results</h3>
 <p>The entire experiment was written in python, so as to make the process easier to replicate than a graphical spreadsheep processor like excel.</p>
 <p>Lets start with our basic imports. we also ignore warnings (uncertainties has some change and I want to ignore it)</p>
-<div id="576a988c" class="cell" data-execution_count="1">
+<div id="c36025f1" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">FutureWarning</span>, module<span class="op">=</span><span class="st">"uncertainties"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -156,11 +157,11 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> odr</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We will also define a gravity constant. We will assume that this has no uncertainty.</p>
-<div id="36ea3e9e" class="cell" data-execution_count="2">
+<div id="53ba21d9" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> <span class="fl">9.796</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>And also a helper function. This helper function, from a list of ufloats for some x and some y will return the slope intercept and r_squared.</p>
-<div id="1c8ac1d0" class="cell" data-execution_count="3">
+<div id="76977103" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_odr(x, y):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    x_nom <span class="op">=</span> [v.nominal_value <span class="cf">for</span> v <span class="kw">in</span> x]</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    x_err <span class="op">=</span> [v.std_dev <span class="cf">for</span> v <span class="kw">in</span> x]</span>
@@ -180,7 +181,7 @@ window.Quarto = {
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> slope, intercept, r_squared</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Since we needed x_0, we measured it. the spring length uncompressed is equal to 30 +/- 0.25cm. for a spring, we were only confident measuring from a ruler in sizes of half a centimeter, so taking half of that as the uncertainty.</p>
-<div id="f83162da" class="cell" data-execution_count="4">
+<div id="a7e7ae4e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>spring_length_uncompressed <span class="op">=</span> ufloat(<span class="dv">30</span>, <span class="fl">0.25</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>milligrams_over_weight <span class="op">=</span> (<span class="dv">232</span> <span class="op">+</span> <span class="dv">140</span> <span class="op">+</span> <span class="dv">173</span> <span class="op">+</span> <span class="dv">154</span>) <span class="op">/</span> <span class="dv">8</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(milligrams_over_weight)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -189,7 +190,7 @@ window.Quarto = {
 </div>
 </div>
 <p>From the above, we also get an average of 87.375 milligrams overweight. This was measured by measuring each weight 2 at a time (the scale doesn’t support heavier), and then adding the total and averaging it over all the weights which is 8 weights.</p>
-<div id="eecf5a53" class="cell" data-execution_count="5">
+<div id="0a12d150" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>weight_to_total_spring_length <span class="op">=</span> [</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="fl">33.5</span>),</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">2</span>, <span class="fl">35.5</span>),</span>
@@ -202,7 +203,7 @@ window.Quarto = {
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>These are the results, this is a list of tuples. the first value is how many weights is used, and the second value is the total weight of the spring</p>
-<div id="e88d729a" class="cell" data-execution_count="6">
+<div id="801501c6" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mass_then_displacement <span class="op">=</span> [</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    (</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        x[<span class="dv">0</span>] <span class="op">*</span> ufloat(<span class="dv">50</span>, <span class="fl">0.1</span>) <span class="op">/</span> <span class="dv">1000</span>,</span>
@@ -213,7 +214,7 @@ window.Quarto = {
 </div>
 <p>First we convert the results to a list of (mass, displacement). We need to do this cause we only recorded how many masses, and also we need to include uncertainties. after that what we’ve gotten is the list of mg.</p>
 <p>We also assumed an uncertainty in our mass calculation of 0.1 grams , since the average mass of the weights was &lt; 0.1 grams</p>
-<div id="ac5d0ae6" class="cell" data-execution_count="7">
+<div id="d1734a91" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mg <span class="op">=</span> [g <span class="op">*</span> x[<span class="dv">0</span>] <span class="cf">for</span> x <span class="kw">in</span> mass_then_displacement]</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(mg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -221,7 +222,7 @@ window.Quarto = {
 </div>
 </div>
 <p>We can also get displacement</p>
-<div id="d28b3bc8" class="cell" data-execution_count="8">
+<div id="e3ef44a2" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>delta_displacement <span class="op">=</span> [</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">1</span>] <span class="op">-</span> spring_length_uncompressed <span class="op">/</span> <span class="dv">100</span> <span class="cf">for</span> x <span class="kw">in</span> mass_then_displacement</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>]</span>
@@ -231,7 +232,7 @@ window.Quarto = {
 </div>
 </div>
 <p>So we have the list of <span class="math inline">\(mg\)</span> and the list of <span class="math inline">\(x_0 - x\)</span></p>
-<div id="991bda92" class="cell" data-execution_count="9">
+<div id="ef3b4701" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>slope, intercept, r_squared <span class="op">=</span> fit_odr(delta_displacement, mg)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"y = </span><span class="sc">{</span>slope<span class="sc">}</span><span class="ss">x + </span><span class="sc">{</span>intercept<span class="sc">}</span><span class="ss">"</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>slope_static <span class="op">=</span> slope</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -313,7 +314,7 @@ Figure&nbsp;1: Static method: mg vs.&nbsp;displacement
 <section id="results-1" class="level3">
 <h3 class="anchored" data-anchor-id="results-1">Results</h3>
 <p>Lets first show our results</p>
-<div id="c456cf0c" class="cell" data-execution_count="11">
+<div id="dd17d421" class="cell" data-execution_count="11">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>spring_weight <span class="op">=</span> ufloat(<span class="fl">43.627</span>, <span class="fl">0.001</span>) <span class="op">/</span> <span class="dv">1000</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>period_to_weight <span class="op">=</span> [</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="fl">7.17</span>),</span>
@@ -327,7 +328,7 @@ Figure&nbsp;1: Static method: mg vs.&nbsp;displacement
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This is a list of how many weights put on, and the amount of time it took for the weight to bounce 20 times.</p>
-<div id="f3832522" class="cell" data-execution_count="12">
+<div id="2c10b33f" class="cell" data-execution_count="12">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>period <span class="op">=</span> [ufloat(x[<span class="dv">1</span>], <span class="fl">0.1</span>) <span class="op">/</span> <span class="dv">20</span> <span class="cf">for</span> x <span class="kw">in</span> period_to_weight]</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(period)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -335,7 +336,7 @@ Figure&nbsp;1: Static method: mg vs.&nbsp;displacement
 </div>
 </div>
 <p>So we get the periods of above. We also assumed an uncertainty in our time measurement of the 20 bounces ot be 0.1, this is arbitrary and it basically means we’re saying a human can check the bounce to an accuracy of 0.1 seconds.</p>
-<div id="6f21734c" class="cell" data-execution_count="13">
+<div id="34d336ae" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> pi</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [((x <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> pi)) <span class="op">**</span> <span class="dv">2</span>) <span class="cf">for</span> x <span class="kw">in</span> period]</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>mass_for_period <span class="op">=</span> [x[<span class="dv">0</span>] <span class="cf">for</span> x <span class="kw">in</span> mass_then_displacement]</span>
@@ -348,7 +349,7 @@ Figure&nbsp;1: Static method: mg vs.&nbsp;displacement
 </div>
 </div>
 <p>Remembering that <span class="math inline">\(x = \frac{T}{2\pi}^2\)</span> and <span class="math inline">\(y = \frac{m_3}{3}\)</span> We can get x and y since we have the mass and displacements.</p>
-<div id="8cf300be" class="cell" data-execution_count="14">
+<div id="4c0e54a1" class="cell" data-execution_count="14">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>slope, intercept, r_squared <span class="op">=</span> fit_odr(x, y)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"y = </span><span class="sc">{</span>slope<span class="sc">}</span><span class="ss">x + </span><span class="sc">{</span>intercept<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -357,7 +358,7 @@ Figure&nbsp;1: Static method: mg vs.&nbsp;displacement
 </div>
 <p>Finally we arrive at our conclusion, using our function from above to solve for <span class="math inline">\(k = 19.47 \pm 0.1\)</span></p>
 <p>As an extra, I have a helper function for comparing the sigma of two values with uncertainties.</p>
-<div id="4caeb373" class="cell" data-execution_count="15">
+<div id="958895af" class="cell" data-execution_count="15">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compsigma(a, b):</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">abs</span>((a.n <span class="op">-</span> b.n) <span class="op">/</span> ((((a.s<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> (b.s<span class="op">**</span><span class="dv">2</span>)) <span class="op">**</span> (<span class="dv">1</span> <span class="op">/</span> <span class="dv">2</span>))))</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compsigma(slope, slope_static))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -366,6 +367,50 @@ Figure&nbsp;1: Static method: mg vs.&nbsp;displacement
 </div>
 </div>
 <p>Between our two values, we have a sigma difference of <span class="math inline">\(\sim 1.94\)</span>.</p>
+<p>We can also graph it. which I will. here is the following graph</p>
+<div id="cell-fig-period" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plt.figure()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> x[<span class="dv">0</span>].n</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>last <span class="op">=</span> x[<span class="op">-</span><span class="dv">1</span>].n</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    [first, last],</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    [first <span class="op">*</span> slope.n <span class="op">+</span> intercept.n, last <span class="op">*</span> slope.n <span class="op">+</span> intercept.n],</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"r-"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="ss">f"Fit: $y = (</span><span class="sc">{</span>slope<span class="sc">.</span>n<span class="sc">:.4g}</span><span class="ss">)x + (</span><span class="sc">{</span>intercept<span class="sc">.</span>n<span class="sc">:.4g}</span><span class="ss">),R^2 = </span><span class="sc">{</span>r_squared<span class="sc">:.4f}</span><span class="ss">$"</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>plt.errorbar(</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    [v.nominal_value <span class="cf">for</span> v <span class="kw">in</span> x],</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    [v.nominal_value <span class="cf">for</span> v <span class="kw">in</span> y],</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    xerr<span class="op">=</span>[v.std_dev <span class="cf">for</span> v <span class="kw">in</span> x],</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    yerr<span class="op">=</span>[v.std_dev <span class="cf">for</span> v <span class="kw">in</span> y],</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    capsize<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">"none"</span>,</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    markersize<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Data"</span>,</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Period Method: f(t) vs. displacement"</span>)</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="vs">r"</span><span class="dv">$</span><span class="ch">\f</span><span class="vs">rac{T}{2</span><span class="er">\</span><span class="vs">pi}</span><span class="dv">^</span><span class="vs">2</span><span class="kw">(</span><span class="vs">t</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r"</span><span class="dv">$</span><span class="vs">m </span><span class="op">+</span><span class="vs"> </span><span class="ch">\f</span><span class="vs">rac{m_3}</span><span class="op">{3}</span><span class="kw">(</span><span class="vs">m</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="fig-period" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-period-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="hello_files/figure-html/fig-period-output-1.png" width="605" height="457" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-period-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Static method: mg vs.&nbsp;displacement
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="conclusions-1" class="level3">
 <h3 class="anchored" data-anchor-id="conclusions-1">Conclusions</h3>

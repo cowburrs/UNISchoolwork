@@ -300,6 +300,42 @@ print(compsigma(slope, slope_static))
 
 Between our two values, we have a sigma difference of $\sim 1.94$.
 
+We can also graph it. which I will. here is the following graph
+
+```{python}
+#| label: fig-period
+#| fig-cap: "Static method: mg vs. displacement"
+plt.figure()
+first = x[0].n
+last = x[-1].n
+
+plt.plot(
+    [first, last],
+    [first * slope.n + intercept.n, last * slope.n + intercept.n],
+    "r-",
+    label=f"Fit: $y = ({slope.n:.4g})x + ({intercept.n:.4g}),R^2 = {r_squared:.4f}$",
+)
+
+plt.errorbar(
+    [v.nominal_value for v in x],
+    [v.nominal_value for v in y],
+    xerr=[v.std_dev for v in x],
+    yerr=[v.std_dev for v in y],
+    capsize=5,
+    linestyle="none",
+    marker="o",
+    markersize=3,
+    label="Data",
+)
+
+plt.title("Period Method: f(t) vs. displacement")
+plt.xlabel(r"$\frac{T}{2\pi}^2(t)$")
+plt.ylabel(r"$m + \frac{m_3}{3}(m)$")
+plt.legend()
+plt.show()
+plt.close()
+```
+
 ### Conclusions
 
 Our values match! they are within 3 sigma, which is within
