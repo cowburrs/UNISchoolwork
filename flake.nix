@@ -164,6 +164,26 @@
               export PS1="\n\[\033[1;32m\][nix-shell:\w]\$\[\033[0m\] "
             '';
           };
+          ENGN1217 = pkgs.mkShell {
+            packages = [
+            ]
+            ++ (with pkgs; [
+              isort
+              black
+              pyright
+              (python3.withPackages (
+                ps: with ps; [
+                  numpy
+                  sympy
+                ]
+              ))
+              entr
+            ]);
+            shellHook = ''
+              export REPO_ROOT=$(git rev-parse --show-toplevel)
+              export PS1="\n\[\033[1;32m\][nix-shell:\w]\$\[\033[0m\] "
+            '';
+          };
           default = pkgs.mkShell {
             packages = [
               packages.x86_64-linux.getkeys
