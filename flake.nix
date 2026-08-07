@@ -135,10 +135,29 @@
               black
               texliveFull
               pyright
-              (python3.withPackages myPythonPackages)
               librsvg
               entr
               nsxiv
+              (python3.withPackages myPythonPackages)
+            ]);
+            shellHook = ''
+              export REPO_ROOT=$(git rev-parse --show-toplevel)
+              export PS1="\n\[\033[1;32m\][nix-shell:\w]\$\[\033[0m\] "
+            '';
+          };
+          ENGN1218 = pkgs.mkShell {
+            packages = [
+            ]
+            ++ (with pkgs; [
+              isort
+              black
+              pyright
+              (python3.withPackages (
+                ps: with ps; [
+                  sympy
+                ]
+              ))
+              entr
             ]);
             shellHook = ''
               export REPO_ROOT=$(git rev-parse --show-toplevel)
