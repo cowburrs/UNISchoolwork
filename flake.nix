@@ -171,9 +171,9 @@
               isort
               black
               pyright
+              octave
               (python3.withPackages (
                 ps: with ps; [
-                  numpy
                   sympy
                 ]
               ))
