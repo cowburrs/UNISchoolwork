@@ -1,0 +1,31 @@
+---
+title: "Bryce Tabangcura - ENGN1218 Lab Week 3"
+format:
+  html:
+    code-fold: false
+  typst:
+    code-fold: false
+jupyter: python3
+---
+LAB?
+
+## 1.1 Theoretical Calculation
+$$V_{total} = V_1 + V_2$$
+$$V_{total} = 5V + 10V$$
+$$V_{total} = 15V$$
+$$\frac{V_{total}}{R_{1}} = I_{Total}$$
+$$\frac{15}{} = I_{Total}$$
+
+## 1.2 Ltspice simulation
+
+## 2.1 Theoretical calculation
+
+## 2.2 Ltspice simulation
+
+## 3.1 Theoretical calculation
+
+## 3.2 Ltspice simulation
+
+## 4.1 Theoretical calculation
+
+## 4.2 Ltspice simulation

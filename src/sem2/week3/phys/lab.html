@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Bryce Tabangcura - PHYS1201 Lab Week 3</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="lab_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lab_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="lab_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="lab_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="lab_files/libs/quarto-html/popper.min.js"></script>
+<script src="lab_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lab_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lab_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="lab_files/libs/quarto-html/quarto-highlight-style-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="lab_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lab_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lab_files/libs/bootstrap/bootstrap-3cf2eab116e73f09c4254a96ed205b17.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bryce Tabangcura - PHYS1201 Lab Week 3</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Lab partner: haven bunter-gooley</p>
+<section id="prelab-questions" class="level2">
+<h2 class="anchored" data-anchor-id="prelab-questions">Prelab Questions</h2>
+<section id="question-1" class="level3">
+<h3 class="anchored" data-anchor-id="question-1">Question 1</h3>
+<p><span class="math display">\[T = 2\pi\sqrt{\frac{L}{g}}\]</span> <span class="math display">\[\frac{T}{2\pi} = \sqrt{\frac{L}{g}}\]</span> <span class="math display">\[\frac{T^2}{4\pi^2} = \frac{L}{g}\]</span> <span class="math display">\[g = \frac{4\pi^2L}{T^2}\]</span></p>
+</section>
+<section id="question-2" class="level3">
+<h3 class="anchored" data-anchor-id="question-2">Question 2</h3>
+<p><span class="math display">\[g\pm\sigma_g = \frac{4\pi^2(L\pm\sigma_L)}{(T\pm\sigma_T)^2}\]</span> <span class="math display">\[\pm\sigma_g = \frac{4\pi^2(L\pm\sigma_L)}{(T\pm\sigma_T)^2} - g\]</span> <span class="math display">\[\sigma_g = \pm(\frac{4\pi^2(L\pm\sigma_L)}{(T\pm\sigma_T)^2} - g)\]</span> I’m using uncertainties python library, so this is what I should be doing, or I mean to say this is the most granularity I need</p>
+</section>
+</section>
+<section id="experiment-1" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-1">Experiment 1</h2>
+<section id="aim" class="level3">
+<h3 class="anchored" data-anchor-id="aim">Aim</h3>
+<p>The aim of this experiment is to measure the period of a rigid pendulum with respect to some initial angle of the pendulum to highlight the connection between gravity and the angle of the pendulum.</p>
+</section>
+<section id="method" class="level3">
+<h3 class="anchored" data-anchor-id="method">Method</h3>
+<p>The setup is simple. First we construct a rigid pendulum. our current setup attaches the apparatus to a table with a clamp.</p>
+<p>See the image or diagram for the setup.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="diagram2.png" class="img-fluid figure-img"></p>
+<figcaption>Diagram of the apparatus (yes i know its bad)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image.png" class="img-fluid figure-img"></p>
+<figcaption>Image of the apparatus.</figcaption>
+</figure>
+</div>
+<p>The image above applies for both experiment 1 and 2.</p>
+<p>Then we will measure the length of the pendulum.</p>
+<p>By eye, we will dangle the pendulum to our initial measuring angle, in our experiment this being 10 degrees.</p>
+<p>We will then measure the time it takes for the pendulum to swing fully 15 times. Once we measure this time, we can take our measurement and divide it by 15 to get the period for each swing.</p>
+<p>The same person that swings the pendulum should be the same person to start the timer, as they can let go of the pendulum as soon as they start the timer, minimizing human error.</p>
+<p>We will repeat this process for as many angles as we are measuring/ This being 10, 25, and 40 twice.</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results">Results</h3>
+<p>All results were recorded and interpreted in python. Lets start with the python preamble</p>
+<p>First start with our imports and helper functions. The imports are standard and the two helper functions are to fit to a linear equation and to measure the sigma between two ufloats.</p>
+<p>To reiterate, fit_odr is a function that takes a list of x and y and returns the slope, intercept and r squared value of a linear equation fit to the equation.</p>
+<div id="56d5dd97" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> pi</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> odr</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> uncertainties <span class="im">import</span> UFloat, ufloat</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">FutureWarning</span>, module<span class="op">=</span><span class="st">"uncertainties"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">UserWarning</span>, message<span class="op">=</span><span class="st">"Using UFloat objects with std_dev==0"</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_odr(x: <span class="bu">list</span>[UFloat], y: <span class="bu">list</span>[UFloat], zero_intercept: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>):</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    x_nom, x_err <span class="op">=</span> [v.n <span class="cf">for</span> v <span class="kw">in</span> x], [v.s <span class="cf">for</span> v <span class="kw">in</span> x]</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    y_nom, y_err <span class="op">=</span> [v.n <span class="cf">for</span> v <span class="kw">in</span> y], [v.s <span class="cf">for</span> v <span class="kw">in</span> y]</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> odr.RealData(x_nom, y_nom, sx<span class="op">=</span>x_err, sy<span class="op">=</span>y_err)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> zero_intercept:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        model, beta0 <span class="op">=</span> odr.Model(<span class="kw">lambda</span> p, x: p[<span class="dv">0</span>] <span class="op">*</span> x), [<span class="dv">1</span>]</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        model, beta0 <span class="op">=</span> odr.Model(<span class="kw">lambda</span> p, x: p[<span class="dv">0</span>] <span class="op">*</span> x <span class="op">+</span> p[<span class="dv">1</span>]), [<span class="dv">1</span>, <span class="dv">0</span>]</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    out <span class="op">=</span> odr.ODR(data, model, beta0<span class="op">=</span>beta0).run()</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    slope <span class="op">=</span> ufloat(out.beta[<span class="dv">0</span>], out.sd_beta[<span class="dv">0</span>])</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    intercept <span class="op">=</span> (</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        ufloat(out.beta[<span class="dv">1</span>], out.sd_beta[<span class="dv">1</span>]) <span class="cf">if</span> <span class="kw">not</span> zero_intercept <span class="cf">else</span> ufloat(<span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    y_pred <span class="op">=</span> model.fcn(out.beta, np.array(x_nom))</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    ss_res <span class="op">=</span> np.<span class="bu">sum</span>((np.array(y_nom) <span class="op">-</span> y_pred) <span class="op">**</span> <span class="dv">2</span>)</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    ss_tot <span class="op">=</span> np.<span class="bu">sum</span>(</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>        np.array(y_nom) <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> zero_intercept</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> (np.array(y_nom) <span class="op">-</span> np.mean(y_nom)) <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    r_squared <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> ss_res <span class="op">/</span> ss_tot</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> slope, intercept, r_squared</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compsigma(a, b):</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">abs</span>((a.n <span class="op">-</span> b.n) <span class="op">/</span> ((((a.s<span class="op">**</span><span class="dv">2</span>) <span class="op">+</span> (b.s<span class="op">**</span><span class="dv">2</span>)) <span class="op">**</span> (<span class="dv">1</span> <span class="op">/</span> <span class="dv">2</span>))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Our measured length for the pendulum was 60.5cm, we were aiming for 60cm, but figuredit would be easier to get close and measure the length. We will assume a measurement uncertainty of one centimeter.</p>
+<p>We measured in increments of 0.5cm, so this is just half the increment.</p>
+<div id="56aa718b" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>length <span class="op">=</span> ufloat(<span class="fl">60.5</span>, <span class="fl">0.25</span>) <span class="op">/</span> <span class="dv">100</span>  <span class="co"># m</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(length)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.6050+/-0.0025</code></pre>
+</div>
+</div>
+<p>Then our results, I record my results in a list of tuples. The first value of each tuple being the time taken for the pendulum to swing 15 times, and the second value being the starting angle of the pendulum</p>
+<div id="4d141cc4" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>total_time_swings_theta: <span class="bu">list</span>[<span class="bu">tuple</span>[<span class="bu">float</span>, <span class="bu">float</span>]] <span class="op">=</span> [</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">23.56</span>, <span class="dv">10</span>),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">23.44</span>, <span class="dv">10</span>),</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">23.9</span>, <span class="dv">25</span>),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">23.78</span>, <span class="dv">25</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">24.1</span>, <span class="dv">40</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">24.29</span>, <span class="dv">40</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>What we want is an equation is the form <span class="math inline">\(y = mx\)</span> plus maybe some c.</p>
+<p>Lets start with equation 4. <span class="math display">\[T = 2\pi\sqrt{\frac{L}{g}}\times (1+\frac{1}{16}\theta_0^2)\]</span> let <span class="math display">\[\phi = 1+\frac{1}{16}\theta_0^2\]</span></p>
+<p><span class="math display">\[T = 2\pi\sqrt{\frac{L}{g}}\phi\]</span> <span class="math display">\[\frac{T}{2\pi\phi} = \sqrt{\frac{L}{g}}\]</span> <span class="math display">\[\frac{T^2}{4\pi^2\phi^2} = \frac{L}{g}\]</span> <span class="math display">\[L4\pi^2\phi^2 = gT^2\]</span> or in other words <span class="math display">\[y = mx\]</span> where <span class="math inline">\(y = L4\pi^2\phi^2\)</span>, and <span class="math inline">\(x = T^2\)</span></p>
+<p>Lets calculate it then</p>
+<p>First lets get the list of periods. We choose an uncertainty of 0.25 seconds for our seconds measurements. If you look at our measurements, our differences for the same angles are ~0.25 seconds, so its safe to assume that human measurement accuracy for a timer to be ~0.25. This is also nearing human reaction time.</p>
+<div id="94af9ae9" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>total_period <span class="op">=</span> [ufloat(x[<span class="dv">0</span>], <span class="fl">0.25</span>) <span class="cf">for</span> x <span class="kw">in</span> total_time_swings_theta]</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># time uncertainty of 0.25 methinks</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [x <span class="op">/</span> <span class="dv">15</span> <span class="cf">for</span> x <span class="kw">in</span> total_period]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A whole degree uncertainty measurement</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(periods)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1.5706666666666667+/-0.016666666666666666, 1.5626666666666666+/-0.016666666666666666, 1.5933333333333333+/-0.016666666666666666, 1.5853333333333335+/-0.016666666666666666, 1.6066666666666667+/-0.016666666666666666, 1.6193333333333333+/-0.016666666666666666]</code></pre>
+</div>
+</div>
+<p>then the list of phi’s (I spelt phi wrong please ignore for the rest of the document)</p>
+<p>We are choosing an uncertainty of 1 degree for the measurement. Normally since the protractor measures in increments of 1, you should choose half that increment so half a degree, but its exceedingly difficult to get 1 degree correct, and even dropping the pendulum might push it back and change the degrees. We chose a whole increment for the angle.</p>
+<div id="7052177c" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>thetas <span class="op">=</span> [ufloat(np.deg2rad(x[<span class="dv">1</span>]), np.deg2rad(<span class="dv">1</span>)) <span class="cf">for</span> x <span class="kw">in</span> total_time_swings_theta]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fi <span class="op">=</span> [<span class="dv">1</span> <span class="op">+</span> (<span class="dv">1</span> <span class="op">/</span> <span class="dv">16</span>) <span class="op">*</span> (x<span class="op">**</span><span class="dv">2</span>) <span class="cf">for</span> x <span class="kw">in</span> thetas]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fi)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1.0019038588736668+/-0.0003807717747333857, 1.0019038588736668+/-0.0003807717747333857, 1.0118991179604182+/-0.0009519294368334644, 1.0118991179604182+/-0.0009519294368334644, 1.0304617419786708+/-0.0015230870989335428, 1.0304617419786708+/-0.0015230870989335428]</code></pre>
+</div>
+</div>
+<p>From that we can get x and y and fit a linear relationship to them, note that we are assuming the zero intercept for this relationship. since.</p>
+<div id="82567349" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [T<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> T <span class="kw">in</span> periods]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [length <span class="op">*</span> <span class="dv">4</span> <span class="op">*</span> (pi<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> (fi[n]<span class="op">**</span><span class="dv">2</span>) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(periods))]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>a, b, c <span class="op">=</span> fit_odr(x, y, zero_intercept<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b, c)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>9.733+/-0.031 0.0+/-0 0.9999474984938824</code></pre>
+</div>
+</div>
+<p>From this we get a value of gravity that is <span class="math inline">\(9.59 \pm 0.06\)</span></p>
+<p>We can also graph this</p>
+<div id="cell-fig-109238" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> x[<span class="dv">0</span>].n</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>last <span class="op">=</span> x[<span class="op">-</span><span class="dv">1</span>].n</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    [first, last],</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    [first <span class="op">*</span> a.n <span class="op">+</span> b.n, last <span class="op">*</span> a.n <span class="op">+</span> b.n],</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"r-"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="ss">f"Fit: $y = (</span><span class="sc">{</span>a<span class="sc">:.4g}</span><span class="ss">)x + (</span><span class="sc">{</span>b<span class="sc">:.4g}</span><span class="ss">),R^2 = </span><span class="sc">{</span>c<span class="sc">:.4f}</span><span class="ss">$"</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.errorbar(</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    [v.nominal_value <span class="cf">for</span> v <span class="kw">in</span> x],</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    [v.nominal_value <span class="cf">for</span> v <span class="kw">in</span> y],</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    xerr<span class="op">=</span>[v.std_dev <span class="cf">for</span> v <span class="kw">in</span> x],</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    yerr<span class="op">=</span>[v.std_dev <span class="cf">for</span> v <span class="kw">in</span> y],</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    capsize<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">"none"</span>,</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    markersize<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Data"</span>,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Length vs Angle"</span>)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$T^2$"</span>)</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"$L4</span><span class="er">\</span><span class="st">pi^2</span><span class="er">\</span><span class="st">phi^2$"</span>)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>&lt;&gt;:25: SyntaxWarning: invalid escape sequence '\p'
+&lt;&gt;:25: SyntaxWarning: invalid escape sequence '\p'
+/tmp/nix-shell.ktyWe9/ipykernel_334990/3875014684.py:25: SyntaxWarning: invalid escape sequence '\p'
+  plt.ylabel("$L4\pi^2\phi^2$")</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-109238" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-109238-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_files/figure-html/fig-109238-output-2.png" width="610" height="451" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-109238-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Length vs Angle
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>So yeah, its ugly. But This is to be expected. This is because we are not directly measuring T and Theta, we are measuring an algebra changed x and y, we shrinked the data range and we got a big error bars. This is just a consequence of the method.</p>
+<p>Plus our R squared value is really high at least</p>
+</section>
+<section id="conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="conclusions">Conclusions</h3>
+<p>Our measured values are slightly off compared to the real associated values of Canberra’s gravity.</p>
+<p>Its likely due to a combination of drag, length measurement error and time measurement error. The biggest proponents being time measurement and length measurement.</p>
+<p>Lets use one of our data values for example We directly plugging into the equation get a value of 9.72 for gravity.</p>
+<div id="7bcaa289" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(periods[<span class="dv">0</span>])</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fi[<span class="dv">0</span>])</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(length <span class="op">*</span> <span class="dv">4</span> <span class="op">*</span> (pi<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> (fi[<span class="dv">0</span>] <span class="op">**</span> <span class="dv">2</span>) <span class="op">/</span> (periods[<span class="dv">0</span>] <span class="op">**</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1.571+/-0.017
+1.0019+/-0.0004
+9.72+/-0.21</code></pre>
+</div>
+</div>
+<p>If we instead mismeasured our periods by JUST 0.1 seconds forwards, we get a value of 8.59. thats more than 10% off just from 0.1 seconds, 0.1 seconds being much larger than human error, but still showing the extent of how such little changes can affect/skew the results.</p>
+<div id="f435f3d2" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(length <span class="op">*</span> <span class="dv">4</span> <span class="op">*</span> (pi<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> (fi[<span class="dv">0</span>] <span class="op">**</span> <span class="dv">2</span>) <span class="op">/</span> ((<span class="fl">0.1</span><span class="op">+</span>periods[<span class="dv">0</span>]) <span class="op">**</span> <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>8.59+/-0.18</code></pre>
+</div>
+</div>
+<p>And it shows why those error bars can be so big.</p>
+<p>Moving on, our value is 2 sigma away from the expected number of 9.7976. We also assume that the canberra figure has no uncertainty whatsoever. This is &lt; 3 sigma meaning our results corroborate with the real world value.</p>
+<div id="89e04829" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compsigma(a, ufloat(<span class="fl">9.7976</span>, <span class="dv">0</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.0588814062652165</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="experiment-2" class="level2">
+<h2 class="anchored" data-anchor-id="experiment-2">Experiment 2</h2>
+<section id="aim-1" class="level3">
+<h3 class="anchored" data-anchor-id="aim-1">Aim</h3>
+<p>The aim of this experiment is to measure the period of a rigid pendulum with respect to the length of the pendulum. highlight the connection between gravity and the length of the pendulum.</p>
+</section>
+<section id="method-1" class="level3">
+<h3 class="anchored" data-anchor-id="method-1">Method</h3>
+<p>The setup is simple. First we construct a rigid pendulum. our current setup attaches the apparatus to a table with a clamp.</p>
+<p>See the following diagram (or recommendedly check the image from experiment 1)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="diagram1.png" class="img-fluid figure-img"></p>
+<figcaption>Terrible diagram of the apparatus</figcaption>
+</figure>
+</div>
+<p>What happens first is we attach the string at a reasonable length distance of pendulum. Our initial starting length goal was 60cm.</p>
+<p>It’s best not to get to 60cm, its best to choose a goal, get near it and measure it. Our actual length value was 60.5. We chose this approach because its the faster approach. Also measure in increments of 0.5cm.</p>
+<p>Then swing the pendulum, same as last experiment, the person to drop the pendulum should be the person to start the timer. Count to 15 swings and record the time it takes. this will be divided by 15 to get the full measurement.</p>
+<p>Then repeat this for all lengths wished to be measured, our lengths being 15, 30, 45, 60</p>
+</section>
+<section id="results-1" class="level3">
+<h3 class="anchored" data-anchor-id="results-1">Results</h3>
+<p>Again, all done in python</p>
+<p>Recorded in a list of tuples, where the first value of the tuples is the time taken to swing 15 times, and the second value is the length measurement.</p>
+<div id="a4e6f23d" class="cell" data-execution_count="11">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>total_time_swings_length: <span class="bu">list</span>[<span class="bu">tuple</span>[<span class="bu">float</span>, <span class="bu">float</span>]] <span class="op">=</span> [</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">23.47</span>, <span class="fl">60.5</span>),</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">20.38</span>, <span class="fl">44.5</span>),</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">16.39</span>, <span class="fl">30.5</span>),</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">10.97</span>, <span class="dv">15</span>),</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>First create a list of period and lengths, we assumed our time measurement of the total time taken to swing 15 times to be 0.25, same as last time, we chose this value arbitrarily, for the same reasons as last experiment.</p>
+<p>We also chose an uncertainty for the lengths of 0.25cm. as we are measuring in increments of 0.5cm, we choose half of the increment.</p>
+<div id="1b96a756" class="cell" data-execution_count="12">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>periods <span class="op">=</span> [ufloat(x[<span class="dv">0</span>], <span class="fl">0.25</span>) <span class="op">/</span> <span class="dv">15</span> <span class="cf">for</span> x <span class="kw">in</span> total_time_swings_length]</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>lengths <span class="op">=</span> [ufloat(x[<span class="dv">1</span>], <span class="fl">0.25</span>) <span class="op">/</span> <span class="dv">100</span> <span class="cf">for</span> x <span class="kw">in</span> total_time_swings_length]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Lets circle back to the maths</p>
+<p><span class="math display">\[T=2\pi\sqrt{\frac{L}{g}}\]</span> Fully simplifying down (skipping steps) <span class="math display">\[gT^2=4\pi^2L\]</span> So we can take <span class="math inline">\(x=T\)</span> and <span class="math inline">\(y=4\pi^2L\)</span></p>
+<p>And doing that in python</p>
+<div id="f9585161" class="cell" data-execution_count="13">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [x<span class="op">**</span><span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> periods]</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> [<span class="dv">4</span> <span class="op">*</span> (pi<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> x <span class="cf">for</span> x <span class="kw">in</span> lengths]</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>e, f, g <span class="op">=</span> fit_odr(x, y, zero_intercept<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(e)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>9.87+/-0.24</code></pre>
+</div>
+</div>
+<p>We get a value of <span class="math inline">\(9.87\pm0.24\)</span> Which is well within expectations, and fits with canberra, being under 3 sigma away.</p>
+<div id="2f204bac" class="cell" data-execution_count="14">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compsigma(e, ufloat(<span class="fl">9.7976</span>, <span class="dv">0</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.29298755273943666</code></pre>
+</div>
+</div>
+<p>Only 0.29 sigma away.</p>
+<p>We can also graph our x and y values</p>
+<div id="cell-fig-static" class="cell" data-execution_count="15">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> x[<span class="dv">0</span>].n</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>last <span class="op">=</span> x[<span class="op">-</span><span class="dv">1</span>].n</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt.plot(</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    [first, last],</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    [first <span class="op">*</span> e.n <span class="op">+</span> f.n, last <span class="op">*</span> e.n <span class="op">+</span> f.n],</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"r-"</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="ss">f"Fit: $y = (</span><span class="sc">{</span>e<span class="sc">:.4g}</span><span class="ss">)x + (</span><span class="sc">{</span>f<span class="sc">:.4g}</span><span class="ss">),R^2 = </span><span class="sc">{</span>g<span class="sc">:.4f}</span><span class="ss">$"</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>plt.errorbar(</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>    [v.nominal_value <span class="cf">for</span> v <span class="kw">in</span> x],</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>    [v.nominal_value <span class="cf">for</span> v <span class="kw">in</span> y],</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    xerr<span class="op">=</span>[v.std_dev <span class="cf">for</span> v <span class="kw">in</span> x],</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    yerr<span class="op">=</span>[v.std_dev <span class="cf">for</span> v <span class="kw">in</span> y],</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    capsize<span class="op">=</span><span class="dv">5</span>,</span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>    linestyle<span class="op">=</span><span class="st">"none"</span>,</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="st">"o"</span>,</span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>    markersize<span class="op">=</span><span class="dv">3</span>,</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a>    label<span class="op">=</span><span class="st">"Data"</span>,</span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Length vs Period"</span>)</span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"$T$"</span>)</span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r"</span><span class="dv">$</span><span class="vs">4</span><span class="er">\</span><span class="vs">pi</span><span class="dv">^</span><span class="vs">2L</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>plt.close()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="fig-static" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-static-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="lab_files/figure-html/fig-static-output-1.png" width="599" height="449" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-static-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Length vs Period
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>So our regression very close, R squared being 0.9991.</p>
+<p>And this graph looks much better than the last, solely due to the equation being much nicer in comparison with the measurements.</p>
+</section>
+<section id="conclusions-1" class="level3">
+<h3 class="anchored" data-anchor-id="conclusions-1">Conclusions</h3>
+<p>Our two values agree with eachother, being 0.56 sigma away from eachother, that being &lt;3 sigma</p>
+<div id="3b4bac98" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(compsigma(a, e))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0.560304762495111</code></pre>
+</div>
+</div>
+<p>Altogether two good experiments.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

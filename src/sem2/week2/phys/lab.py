@@ -1,7 +1,7 @@
 import warnings
 
 import matplotlib.pyplot as plt
-from uncertainties import ufloat
+from uncertainties import UFloat, ufloat
 import numpy as np
 from scipy import odr
 
@@ -12,7 +12,7 @@ print("haven bunter-gooley")
 
 g = 9.796
 
-def fit_odr(x, y):
+def fit_odr(x: list[UFloat], y: list[UFloat]):
     x_nom = [v.nominal_value for v in x]
     x_err = [v.std_dev for v in x]
     y_nom = [v.nominal_value for v in y]

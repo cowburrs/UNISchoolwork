@@ -63,7 +63,7 @@
             ]
           );
       pkgs = nixpkgs.legacyPackages.${system};
-      myPythonPackages =
+      PHYS1201PythonPackages =
         ps: with ps; [
           numpy
           matplotlib
@@ -74,7 +74,7 @@
         ];
       patchedQuarto =
         (pkgs.quarto.override {
-          extraPythonPackages = myPythonPackages;
+          extraPythonPackages = PHYS1201PythonPackages;
         }).overrideAttrs
           (oldAttrs: {
             postPatch = (oldAttrs.postPatch or "") + ''
@@ -138,7 +138,7 @@
               librsvg
               entr
               nsxiv
-              (python3.withPackages myPythonPackages)
+              (python3.withPackages PHYS1201PythonPackages)
             ]);
             shellHook = ''
               export REPO_ROOT=$(git rev-parse --show-toplevel)
@@ -147,17 +147,12 @@
           };
           ENGN1218 = pkgs.mkShell {
             packages = [
+            patchedQuarto
             ]
             ++ (with pkgs; [
-              isort
-              black
-              pyright
-              (python3.withPackages (
-                ps: with ps; [
-                  sympy
-                ]
-              ))
               entr
+              typst
+              tinymist
             ]);
             shellHook = ''
               export REPO_ROOT=$(git rev-parse --show-toplevel)
