@@ -131,6 +131,8 @@
               patchedQuarto
             ]
             ++ (with pkgs; [
+              typst
+              tinymist
               isort
               black
               texliveFull
@@ -141,15 +143,20 @@
               (python3.withPackages PHYS1201PythonPackages)
             ]);
             shellHook = ''
+              unset SOURCE_DATE_EPOCH
               export REPO_ROOT=$(git rev-parse --show-toplevel)
               export PS1="\n\[\033[1;32m\][nix-shell:\w]\$\[\033[0m\] "
             '';
           };
           ENGN1218 = pkgs.mkShell {
             packages = [
-            patchedQuarto
+              patchedQuarto
             ]
             ++ (with pkgs; [
+              python3
+              isort
+              black
+              pyright
               entr
               typst
               tinymist
