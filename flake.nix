@@ -25,7 +25,7 @@
       uv2nix,
       pyproject-build-systems,
       ...
-    }:
+    }@inputs:
     let
       inherit (nixpkgs) lib;
       system = "x86_64-linux";
@@ -150,7 +150,12 @@
           };
           ENGN1218 = pkgs.mkShell {
             packages = [
-              patchedQuarto
+              (pkgs.rustPlatform.buildRustPackage {
+                pname = "resistor-colours";
+                version = "0.1.0";
+                src = ./pkgs/res;
+                cargoLock.lockFile = ./pkgs/res/Cargo.lock;
+              })
             ]
             ++ (with pkgs; [
               python3
