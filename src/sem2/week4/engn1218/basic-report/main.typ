@@ -2,13 +2,13 @@
 #import "@preview/basic-report:0.5.0": *
 
 #show: it => basic-report(
-  doc-category: "Betriebsanleitung",
-  doc-title: "Raketenstart für Dummies",
-  author: "Daniel Düsentrieb",
-  affiliation: "MouseTec, Entenhausen",
-  logo: image("assets/aerospace-engineering.png", width: 2cm),
+  doc-category: "Week 3 Lab ENGN1218",
+  doc-title: "Week 3 Lab ENGN1218",
+  author: "Bryce Tabangcura",
+  affiliation: "ANU",
+  // logo: image("assets/aerospace-engineering.png", width: 2cm),
   // <a href="https://www.flaticon.com/free-icons/aerospace" title="aerospace icons">Aerospace icons created by gravisio - Flaticon</a>
-  language: "de",
+  language: "en",
   compact-mode: true,
   it,
 )
@@ -73,6 +73,7 @@ $
           V & = V_1 = 8.2 k \
           I & = 10/(8.2*10^3) \
             & = 1.2*10^-3 Omega
+              "The other one is" & = 8.3 times 10^-3
 $
 = Simple Resistive Circuit
 == Theoretical Calculation
@@ -124,13 +125,15 @@ $
   table.cell(colspan: 3)[Current through resistor (mA)],
   "grey", "R_1", "R_2", "R_3", "R_1", "R_2", "R_3",
   "Theoretical",
-  str(r(0.001398052152057807)),
-  str(r(0.0008796732642161483)),
-  str(r(0.0005183788878416588)),
   str(r(2.0970782280867106)),
   str(r(2.9029217719132894)),
   str(r(2.9029217719132894)),
-  "Simulated", "0.0014", "0.00088", "0.00052", "2.1", "2.9", "2.9",
+  str(r(0.001398052152057807)),
+  str(r(0.0008796732642161483)),
+  str(r(0.0005183788878416588)),
+  "Simulated",
+  "2.1", "2.9", "2.9",
+  "0.0014", "0.00088", "0.00052",
   "Measured", "", "", "", "", "", "",
 )
 
