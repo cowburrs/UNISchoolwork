@@ -105,7 +105,7 @@ def plot_residuals(
         sqrt(yi.std_dev**2 + (slope.n * xi.std_dev) ** 2) for xi, yi in zip(x, y)
     ]
     chi2 = sum((r.nominal_value**2) / (s**2) for r, s in zip(residuals, sigma_eff))
-    dof = len(y) - 2
+    dof = len(y) - 1
     chi2_reduced = chi2 / dof
     zero_fit = (
         ufloat(0, 0),
@@ -139,7 +139,7 @@ heightvoltagetuples: list[tuple[int, int]] = [
 heights = [((ufloat(i[0], 1.5)) ** 0.5) * 1e-2 for i in heightvoltagetuples]  # m
 voltages = [ufloat(i[1], 2) * 1e3 for i in heightvoltagetuples]  # V
 # plot(heights, voltages)
-print(plot_residuals(heights, voltages, show=False))
+# print(plot_residuals(heights, voltages, show=False))
 del heightvoltagetuples, heights, voltages
 ncoilvoltagetuples: list[tuple[int, int]] = [
     (5, 38),
@@ -152,7 +152,7 @@ ncoilvoltagetuples: list[tuple[int, int]] = [
 ncoils = [ufloat(i[0], 0.5) for i in ncoilvoltagetuples]
 voltages = [ufloat(i[1], 2) * 1e3 for i in ncoilvoltagetuples]  # V
 # plot(ncoils, voltages)
-print(plot_residuals(ncoils, voltages, show=False))
+# print(plot_residuals(ncoils, voltages, show=False))
 del ncoilvoltagetuples, ncoils, voltages
 diametervoltagetuples: list[tuple[float, int]] = [
     (9.0, 27),
@@ -168,9 +168,9 @@ print(
         diameters,
         voltages,
         fitodr=fit_odr(diameters, voltages, zero_intercept=True),
-        show=False,
+        # show=False,
     )
 )
 
 
-# First is 4 cm, rest is 5 cm size difference
+# First is 4 cm, rest is 5 cm size differenceactually you kinda can see
