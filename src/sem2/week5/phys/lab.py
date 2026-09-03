@@ -126,6 +126,31 @@ def plot_residuals(
     return chi2_reduced
 
 
+z_cm_small = [10, 9.5, 9, 8.5, 8, 7.5, 7, 6.5, 6, 5.5, 5, 4.5, 4, 3.5, 3]
+B_small_mT = [
+    0.234,
+    0.267,
+    0.309,
+    0.345,
+    0.402,
+    0.493,
+    0.542,
+    0.663,
+    0.791,
+    0.98,
+    1.19,
+    1.52,
+    2.05,
+    2.73,
+    4.16,
+]
+mu_0 = constants.mu_0
+zsmall = [mu_0 / ((ufloat(x / 100, 1e-100) ** 3) * 2 * pi) for x in z_cm_small]
+bsmall = [ufloat(x, 1e-100) * 1e-3 for x in B_small_mT]
+# m = fit_odr(zsmall, bsmall)[0].n
+plot(zsmall, bsmall)
+# plot_residuals(zsmall, bsmall)
+
 # initdiameter = ufloat(2.5, 0.05)  # cm
 # coils30delta = ufloat(1.5, 0)
 heightvoltagetuples: list[tuple[int, int]] = [
@@ -136,10 +161,17 @@ heightvoltagetuples: list[tuple[int, int]] = [
     (25, 206),
     (30, 212),
 ]
-heights = [((ufloat(i[0], 1.5)) ** 0.5) * 1e-2 for i in heightvoltagetuples]  # m
+radius_base = ufloat(2.525, 0.0125) / 100
+n_base = 30
+height_base = ufloat(20, 1.2) / 100
+g = 9.79
+heights = [
+    25 * mu_0 * m * n_base * sqrt(2 * g) / ((5 ** (5 / 2)) * (radius_base**2)) * v
+    for v in [ufloat(i[0], 1.5) / 100 for i in heightvoltagetuples]
+]  # m
 voltages = [ufloat(i[1], 2) * 1e3 for i in heightvoltagetuples]  # V
-# plot(heights, voltages)
-# print(plot_residuals(heights, voltages, show=False))
+# plot(heights, voltages,xlab="")
+# print(plot_residuals(heights, voltages))
 del heightvoltagetuples, heights, voltages
 ncoilvoltagetuples: list[tuple[int, int]] = [
     (5, 38),
@@ -149,20 +181,39 @@ ncoilvoltagetuples: list[tuple[int, int]] = [
     (25, 144),
     (30, 172),
 ]
-ncoils = [ufloat(i[0], 0.5) for i in ncoilvoltagetuples]
+ncoils = [
+    24
+    * mu_0
+    * m
+    * ((2 * g * height_base) ** (1 / 2))
+    / (5 ** (5 / 2) * (radius_base**2))
+    * n
+    for n in [ufloat(x[0], 0.5) for x in ncoilvoltagetuples]
+]
 voltages = [ufloat(i[1], 2) * 1e3 for i in ncoilvoltagetuples]  # V
 # plot(ncoils, voltages)
 # print(plot_residuals(ncoils, voltages, show=False))
 del ncoilvoltagetuples, ncoils, voltages
-diametervoltagetuples: list[tuple[float, int]] = [
+diametervoltagetuples: list[tuple[float, float]] = [
     (9.0, 27),
-    (4.9, 57),
-    (2.5, 172),
-    (1.45, 268),
+    (5.75, 47.2),
+    (4.85, 57),
+    (3.95, 121),  # pm 0.025
+    (2.525, 220),
+    (1.4, 268),
 ]
-diameters = [1 / ((ufloat(i[0], 0.05) * 1e-2) ** 2) for i in diametervoltagetuples]  # m
-voltages = [ufloat(i[1], 2) * 1e3 for i in diametervoltagetuples]  # V
-# plot(diameters, voltages)
+diameters = [
+    # 1 / (((ufloat(i[0], 0.05) * 1e-2)) ** (1/2)) for i in diametervoltagetuples
+    24
+    * mu_0
+    * m
+    * n_base
+    * ((2 * g * height_base) ** (1 / 2))
+    / (5 ** (5 / 2) * (r**2))
+    for r in [ufloat(i[0], 0.0125) for i in diametervoltagetuples]
+]  # m
+voltages = [(ufloat(i[1], 2) * 1e3) for i in diametervoltagetuples]  # V
+plot(diameters, voltages)
 print(
     plot_residuals(
         diameters,
@@ -171,6 +222,3 @@ print(
         # show=False,
     )
 )
-
-
-# First is 4 cm, rest is 5 cm size differenceactually you kinda can see
