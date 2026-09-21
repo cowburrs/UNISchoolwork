@@ -64,13 +64,17 @@
           );
       pkgs = nixpkgs.legacyPackages.${system};
       PHYS1201PythonPackages =
-        ps: with ps; [
+        ps:
+        with ps;
+        [
           numpy
           matplotlib
           pandas
           schemdraw
           uncertainties
           scipy
+        ]
+        ++ [
         ];
       patchedQuarto =
         (pkgs.quarto.override {
@@ -126,9 +130,24 @@
           );
         in
         {
+          MATH1014 = pkgs.mkShell {
+            packages = [
+            ]
+            ++ (with pkgs; [
+              typst
+              tinymist
+            ]);
+            shellHook = ''
+              unset SOURCE_DATE_EPOCH
+              export REPO_ROOT=$(git rev-parse --show-toplevel)
+              export PS1="\n\[\033[1;32m\][nix-shell:\w]\$\[\033[0m\] "
+            '';
+          };
           PHYS1201 = pkgs.mkShell {
             packages = [
               patchedQuarto
+              packages.x86_64-linux.getkeys
+              packages.x86_64-linux.mkbib
             ]
             ++ (with pkgs; [
               typst
