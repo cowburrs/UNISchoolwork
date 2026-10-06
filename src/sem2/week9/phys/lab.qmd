@@ -1,0 +1,40 @@
+---
+title: "Bryce Tabangcura - Lab Week 2"
+format:
+  html:
+    code-fold: false
+  typst:
+    code-fold: false
+jupyter: python3
+---
+Lab partner: haven bunter-gooley
+
+## Pre-Lab
+1. Equation that relates $n$, $\theta$, $d$ and $\lambda$
+   $$d sin(\theta) = n \lambda$$
+
+1. Solving for 4000 and 440
+   
+$$d\sin(\theta) = n\lambda$$
+$$\theta = \arcsin\left(\frac{n\lambda}{d}\right)$$
+$$d = \frac{1\text{ cm}}{4000} = \frac{0.01\text{ m}}{4000}$$
+$$d = 2.5 \times 10^{-6}\text{ m}$$
+$$n = 1$$
+$$\lambda = 0.44 \times 10^{-6}\text{ m}$$
+$$\theta = \arcsin\left(\frac{1 \times 0.44 \times 10^{-6}}{2.5 \times 10^{-6}}\right)$$
+$$\theta = \arcsin(0.176)$$
+$$\theta \approx 10.14^\circ$$
+   
+
+## Preamble 
+
+## Experiment 1
+
+### Aim
+
+### Method
+
+### Results
+
+### Conclusions
+
