@@ -133,10 +133,10 @@ def two_tailed_p(diff: float):
 
 
 diffractoingrating = 600
-uncertainty = 0.5 / 60
+uncertainty = 7.5 / 60
 middle = umath.radians(  # pyright: ignore[reportAttributeAccessIssue]
     (ufloat(40 + 7 / 60, uncertainty) + ufloat(12 + 11 / 60, uncertainty)) / 2
-)  
+)
 unknown1 = [41 + 49 / 60, 43 + 55 / 60, 47]
 unknown2 = [48 + 55 / 60, 48, 47 + 15 / 60]
 unknown3 = [47]
@@ -187,25 +187,27 @@ unknown1waves = [calc_wavelength(x - middle) for x in unknown1rad]
 unknown2waves = [calc_wavelength(x - middle) for x in unknown2rad]
 unknown3waves = [calc_wavelength(x - middle) for x in unknown3rad]
 print(unknown1waves)
-print()
-print(unknown2waves)
-print()
-print(unknown3waves)
 
 
-# First is 53 degrees 37 mins
-# faint purple 1  12 11
-# faint purple 2 40 7
-## UNKOWN 1
-# first purple at 41 59
-# some type of green 43 55
-# SUPER STRONG ORANGE 47 0
-## UNKNOWN 3
-#  47 on the dot basically
-# sodium easily cause its only one line
-## UNKNOWN 2
-# LOTS OF ORANGE AND RED ON A SPECTROM THINGY
-# 48 55
-# 48
-# 47 15
-# ERROR 5 minutes
+def gettopwaves(unknown):
+    return sorted(
+        [
+            [
+                (compsigma(ufloat(spectral[0] / 1e9, 1e-15), wave), spectral[1])
+                for spectral in spectral_lines
+            ]
+            for wave in unknown
+        ]
+    )
+
+
+def getn(unknown, n):
+    return [sorted(x, key=lambda x: x[0])[0:n] for x in gettopwaves(unknown)]
+
+
+
+[print(x) for x in getn(unknown1waves, 3)]
+print()
+[print(x) for x in getn(unknown2waves, 3)]
+print()
+[print(x) for x in getn(unknown3waves, 5)]
