@@ -201,6 +201,7 @@
               (python3.withPackages (
                 ps: with ps; [
                   sympy
+                  uncertainties
                 ]
               ))
               entr

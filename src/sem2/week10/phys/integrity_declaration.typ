@@ -57,7 +57,7 @@ You may not present material produced by generative AI as your own work, as this
   checkbox(checked: false), [AI tools were used as described below:],
 )
 
-AI Tools Used: claude
+AI Tools Used: 
 
 How AI was used (check all that apply):
 
