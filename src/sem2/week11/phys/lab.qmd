@@ -1,0 +1,37 @@
+---
+title: "Bryce Tabangcura - Lab Week whatrever"
+format:
+  html:
+    code-fold: false
+  typst:
+    code-fold: false
+jupyter: python3
+---
+Lab partner: haven bunter-gooley
+
+## Pre-Lab
+
+1. Yes
+Using our first equation
+$$y_{dark} = L \frac {(m + 1/2)\lambda} {d}$$
+We can choose a difference between some m. so we will choose m as 1 and 0
+$$\Delta y_{dark} = L \frac {(1 + 1/2)\lambda} {d} - L \frac {(0 + 1/2)\lambda} {d}$$
+$$\Delta y_{dark} = L \frac {\lambda} {d}$$
+Then subsititue all of our values
+$$\Delta y_{dark} = 1 \times \frac {650 \times 10^-9} {0.3 \times 10^-3}$$
+This is around 2 millimeters
+aka $\Delta y_{dark} = 2.2 \times 10^-3 m$
+
+## Preamble 
+
+## Experiment 1
+
+### Aim
+
+### Method
+
+### Results
+
+### Conclusions
+
+#### Overall Conclusion
