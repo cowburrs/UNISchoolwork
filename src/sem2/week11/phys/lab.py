@@ -132,99 +132,46 @@ def two_tailed_p(diff: float):
     return 2 * norm.sf(z)
 
 
-# mean std
-# NOTE: BASE
-# 120 counts and per second
-# 0.574 0.3
-# 0.549 0.274
-# 0.607 0.376
+# Width tape = 1.79
+# Width tape = 420 +/- 10
+# single slit
+# 120 697 pm 10 This was distance between two peaks, not including middle peak
+# Length to slit is 76.5 pm 0.25
+# second twoslit size between in 585
+# 304 298. Considering our uncertainty is 10,. they are within 3 sigma
+# hair is 273
 
-# NOTE:
-# Brown white black grey
-# Copper lead acrylic pvc
-# Base only
-# 1.300 1.213
-# PVC depth 9.36 or 9.36 Since we both had the same caliper measurement
-# Instead of choosing standard error as half of our difference, we choose
-# Half the calipers increent as our sstandard deviation. which is 0.01 mm
+width_tape = ufloat(1.79, 0.02) / 100
+tape_pixels = ufloat(420, 10)
+distance_slit_screen = ufloat(76.5, 0.25) / 100
 
-# NOTE: PVC
-# PVC 1 layer
-# 0.892 0.968
-# 0.800 0.885
-# PVC 2 layer
-# 0.875 0.975
-# 0.883 0.852
-# PVC 3 layer
-# 0.725 0.860
-# 0.717 0.842
+single_slit = ufloat(697, 10) - ufloat(120, 10)
 
-# NOTE: Second experiment with closer.
-# nothing
-# 0.325 0.663
-# 0.408 0.628
-# Base
-# 2.225 1.399
-# 2.425 1.459
-# PVC 1 layer
-# 1.433 1.207
-# 1.467 1.223
-# PVC 2 layer
-# 1.242 1.045
-# 1.5 1.23
-# PVC 3 layer
-# 1.317 1.123
-# 1.150 1.001
-exp2data: list[tuple[int, float, float]] = [
-    (-1, 0.325, 0.663),
-    (-1, 0.408, 0.628),
-    (0, 2.225, 1.399),
-    (0, 2.425, 1.459),
-    (1, 1.433, 1.207),
-    (1, 1.467, 1.223),
-    (2, 1.242, 1.045),
-    (2, 1.5, 1.23),
-    (3, 1.317, 1.123),
-    (3, 1.150, 1.001),
-]
-exp1data: list[tuple[int, float, float]] = [
-    (-1, 0.574, 0.3),
-    (-1, 0.549, 0.274),
-    (-1, 0.607, 0.376),
-    (0, 1.300, 1.213),
-    (1, 0.892, 0.968),
-    (1, 0.800, 0.885),
-    (2, 0.875, 0.975),
-    (2, 0.883, 0.852),
-    (1, 0.725, 0.860),
-    (1, 0.717, 0.842),
-]
-# 1.300 1.213
-# PVC depth 9.36 or 9.36 Since we both had the same caliper measurement
-# Instead of choosing standard error as half of our difference, we choose
-# Half the calipers increent as our sstandard deviation. which is 0.01 mm
-lengthpvc = ufloat(9.36, 0.01) / 1000
+light_frequency = (0.04e-3 * width_tape * (single_slit / tape_pixels)) / (
+    2 * distance_slit_screen
+)
+print(light_frequency)
+print(compsigma(light_frequency, ufloat(642e-9, 2e-9)))
 
+double_slit = ufloat(585, 10)
 
-def databetter(data: list[tuple[int, float, float]]):
-    ufloats = [(x[0], ufloat(x[1], x[2] / sqrt(120))) for x in data]
-    numbers = set([x[0] for x in ufloats])
-    combinedufloats = [list(filter(lambda y: y[0] == x, ufloats)) for x in numbers]
-    values = [(x[0][0], sum([y[1] for y in x]) / len(x)) for x in combinedufloats]
-    sortedvalues = sorted(values, key=lambda x: x[0])
-    out = [(x[0], x[1] - sortedvalues[0][1]) for x in sortedvalues[1:]]
-    return out
+# I'm remarkably confident we chose a double slit spacing of somewhere in the range of 0.04, and we did the experiment wrong
+print(2 * distance_slit_screen * light_frequency / (0.25e-3))
+print(double_slit * width_tape / tape_pixels)
+print(
+    compsigma(
+        double_slit * width_tape / tape_pixels,
+        2 * distance_slit_screen * light_frequency / (0.25e-3),
+    )
+)
 
+# Compsigma
+print(compsigma(ufloat(304, 10), ufloat(298, 10)))
 
-def datainterpolate(data: list[tuple]):
-    xdata = [-x[0] * lengthpvc for x in data[1:]]
-    ydata = [umath.log(x[1] / data[0][1]) for x in data[1:]]
-    out = fit_odr(xdata, ydata)
-    return out
+hair_px = ufloat(273, 10)
 
+hair_width = (
+    light_frequency * distance_slit_screen * 2 / (hair_px / tape_pixels * width_tape)
+)
 
-mu2 = datainterpolate(databetter(exp2data))[0]
-print(compsigma(mu2, ufloat(14, 0.5)))
-
-mu1 = datainterpolate(databetter(exp1data))[0]
-print(compsigma(mu1, ufloat(1.4, 0.05)*10))
+print(compsigma(ufloat(80e-6, 5e-6), hair_width))
