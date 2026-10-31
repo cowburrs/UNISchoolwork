@@ -37,7 +37,7 @@ eqs = [
 ]
 
 sol = linsolve(eqs, f1, f2x, f2y, f3, f4x, f4y, f5x, f5y, f6, f7, f8, f9, f10, f11)
-print(sol)
+# print(sol)
 
 names = [
     "f1",
@@ -66,11 +66,11 @@ def mag(a, b):
     return sqrt(a**2 + b** 2)
 
 
-print("f2x")
+print("f2")
 print(mag(values["f2x"], values["f2y"]))
 
-print("f4x")
+print("f4")
 print(mag(values["f4x"], values["f4y"]))
 
-print("f5x")
+print("f5")
 print(mag(values["f5x"], values["f5y"]))
